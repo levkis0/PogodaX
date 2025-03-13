@@ -1,13 +1,21 @@
+html,
 body {
-    font-family: 'Arial', sans-serif;
+    height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Arial', sans-serif;
     background: linear-gradient(to right, #1a002b, #3b0057);
     color: #fff;
-    overflow-x: hidden;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container {
+    flex: 1;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -71,6 +79,8 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 20px;
+    /* Add space between cards */
 }
 
 .current-details {
@@ -114,6 +124,8 @@ header {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    gap: 20px;
+    /* Add space between forecast cards */
 }
 
 .ad-space {
@@ -136,6 +148,13 @@ header {
     margin-top: 10px;
 }
 
+footer {
+    background-color: #222222;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -150,4 +169,29 @@ header {
 
 .hidden {
     display: none;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+
+    .input-field,
+    .search-button {
+        width: 100%;
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    .weather-card,
+    .forecast {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        padding: 10px;
+    }
 }
