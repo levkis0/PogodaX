@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="oTM_h26rs2IfY2FibGN01892OXqRDe6ajDfmmA3Lfaw" />
     <meta name="description" content="Точний прогноз погоди на 10 днів. Дізнайтеся температуру, вологість, вітер, опади та інші метеодані для вашого міста!">
     <meta name="keywords" content="погода, прогноз погоди, погода на 10 днів, температура, вітер, опади, метеопрогноз, sinoptik">
     <title>PogodaX</title>
@@ -12,43 +11,51 @@
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>PogodaX</h1>
-            <div class="search-container">
-                <input type="text" id="city-input" class="input-field" placeholder="Введіть назву міста">
-                <button id="search-btn" class="search-button">Пошук</button>
+    <div class="wrapper">
+        <div class="container">
+            <header>
+                <h1>PogodaX</h1>
+                <div class="search-container">
+                    <input type="text" id="city-input" class="input-field" placeholder="Введіть назву міста">
+                    <button id="search-btn" class="search-button">Пошук</button>
+                </div>
+                <p id="error-message" class="hidden error-message"></p>
+            </header>
+
+            <div id="ad-space" class="ad-space">
+                <!-- Тут можна розмістити код Google AdSense -->
             </div>
-            <p id="error-message" class="hidden error-message"></p>
-        </header>
 
-        <div id="ad-space" class="ad-space">
-            <!-- Тут можна розмістити код Google AdSense -->
-        </div>
-
-        <div id="current-weather" class="glass-effect hidden">
-            <h2 id="city-name"></h2>
-            <p id="current-date"></p>
-            <div class="weather-card">
-                <div class="current-details">
-                    <img id="current-icon" alt="Іконка погоди">
-                    <div class="temp-container">
-                        <p id="current-temp"></p>
-                        <p id="current-description" class="description"></p>
+            <div id="current-weather" class="glass-effect hidden">
+                <h2 id="city-name"></h2>
+                <p id="current-date"></p>
+                <div class="weather-card">
+                    <div class="current-details">
+                        <img id="current-icon" alt="Іконка погоди">
+                        <div class="temp-container">
+                            <p id="current-temp"></p>
+                            <p id="current-description" class="description"></p>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="detail"><i class="fas fa-wind"></i><span id="wind"></span></div>
+                        <div class="detail"><i class="fas fa-tint"></i><span id="humidity"></span></div>
+                        <div class="detail"><i class="fas fa-tachometer-alt"></i><span id="pressure"></span></div>
                     </div>
                 </div>
-                <div class="weather-details">
-                    <div class="detail"><i class="fas fa-wind"></i><span id="wind"></span></div>
-                    <div class="detail"><i class="fas fa-tint"></i><span id="humidity"></span></div>
-                    <div class="detail"><i class="fas fa-tachometer-alt"></i><span id="pressure"></span></div>
-                </div>
+            </div>
+
+            <div id="forecast-container" class="glass-effect hidden">
+                <h3>Прогноз на 5 днів</h3>
+                <div id="forecast" class="forecast"></div>
             </div>
         </div>
 
-        <div id="forecast-container" class="glass-effect hidden">
-            <h3>Прогноз на 10 днів</h3>
-            <div id="forecast" class="forecast"></div>
-        </div>
+        <footer>
+            <p>© 2025 Всі права захищені. Дані надані <a href="https://openweathermap.org/"
+                    target="_blank">OpenWeather</a>.</p>
+            <p>Створено <a href="https://levkisstudio.netlify.app/" target="_blank">Levkis Studio</a></p>
+        </footer>
     </div>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
