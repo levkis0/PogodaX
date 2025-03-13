@@ -1,0 +1,153 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #1a002b, #3b0057);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    padding: 12px;
+    border: 2px solid #5a2a7a;
+    border-radius: 30px 0 0 30px;
+    width: 300px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.input-field:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.search-button {
+    padding: 12px;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    background-color: #5a2a7a;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1;
+}
+
+.search-button:hover {
+    background-color: #6b3a8a;
+    transform: scale(1.05);
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.weather-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.current-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temp-container {
+    display: flex;
+    align-items: center;
+}
+
+.description {
+    margin-left: 10px;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+}
+
+.detail i {
+    margin-right: 5px;
+}
+
+.forecast-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.ad-space {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #000;
+    text-align: center;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.ad-space:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.error-message {
+    color: #ff4d4d;
+    margin-top: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hidden {
+    display: none;
+}
