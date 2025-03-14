@@ -1,3 +1,4 @@
+
 // Функція для отримання даних погоди з OpenWeather API
 async function fetchWeatherData(city) {
   const apiKey = "5d5d8d35740cabf7e723aa4ac9d44954"; // Замініть на ваш API ключ
@@ -19,7 +20,7 @@ async function fetchWeatherData(city) {
 
 // Функція для отримання прогнозу погоди на 5 днів
 async function fetchForecastData(city) {
-  const apiKey = "YOUR_API_KEY"; // Замініть на ваш API ключ
+  const apiKey = "5d5d8d35740cabf7e723aa4ac9d44954"; // Замініть на ваш API ключ
   const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=uk`;
 
   try {
