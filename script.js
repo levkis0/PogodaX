@@ -1,4 +1,3 @@
-
 // Функція для отримання даних погоди з OpenWeather API
 async function fetchWeatherData(city) {
   const apiKey = "5d5d8d35740cabf7e723aa4ac9d44954"; // Замініть на ваш API ключ
