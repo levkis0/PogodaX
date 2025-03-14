@@ -1,69 +1,49 @@
-const apiKey = "5d5d8d35740cabf7e723aa4ac9d44954"; // Замініть на ваш API ключ OpenWeather
-
-document.getElementById("search-btn").addEventListener("click", () => {
-  const city = document.getElementById("city-input").value;
-  if (city) {
-    fetchWeatherData(city);
-  }
-});
-
+// Функція для отримання даних погоди з OpenWeather API
 async function fetchWeatherData(city) {
+  const apiKey = "5d5d8d35740cabf7e723aa4ac9d44954"; // Замініть на ваш API ключ
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=uk`;
+
   try {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&lang=ua&appid=${apiKey}`
-    );
-    if (!response.ok) throw new Error("Місто не знайдено");
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Не вдалося отримати дані");
+    }
     const data = await response.json();
     updateCurrentWeather(data);
-    updateForecast(data);
   } catch (error) {
     document.getElementById("error-message").textContent = error.message;
     document.getElementById("error-message").classList.remove("hidden");
   }
 }
 
+// Функція для оновлення поточної погоди
 function updateCurrentWeather(data) {
-  const currentWeather = data.list[0];
-  document.getElementById("city-name").textContent = data.city.name;
-  document.getElementById("current-date").textContent = new Date(
-    currentWeather.dt_txt
-  ).toLocaleDateString("uk-UA");
-  document.getElementById(
-    "current-temp"
-  ).textContent = `${currentWeather.main.temp}°C`;
+  document.getElementById("city-name").textContent = data.name;
+  document.getElementById("current-date").textContent =
+    new Date().toLocaleDateString("uk-UA");
+  document.getElementById("current-temp").textContent = `${data.main.temp}°C`;
   document.getElementById("current-description").textContent =
-    currentWeather.weather[0].description;
-  document.getElementById(
-    "current-icon"
-  ).src = `http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}.png`;
-  document.getElementById(
-    "wind"
-  ).textContent = `Вітер: ${currentWeather.wind.speed} м/с`;
+    data.weather[0].description;
+  document.getElementById("wind").textContent = `Вітер: ${data.wind.speed} м/с`;
   document.getElementById(
     "humidity"
-  ).textContent = `Вологість: ${currentWeather.main.humidity}%`;
+  ).textContent = `Вологість: ${data.main.humidity}%`;
   document.getElementById(
     "pressure"
-  ).textContent = `Тиск: ${currentWeather.main.pressure} гПа`;
+  ).textContent = `Тиск: ${data.main.pressure} гПа`;
+
+  const iconCode = data.weather[0].icon;
+  const iconElement = document.getElementById("current-icon");
+  iconElement.src = `https://openweathermap.org/img/wn/${iconCode}.png`;
+  iconElement.alt = "Іконка погоди";
+
   document.getElementById("current-weather").classList.remove("hidden");
 }
 
-function updateForecast(data) {
-  const forecastContainer = document.getElementById("forecast");
-  forecastContainer.innerHTML = "";
-  for (let i = 0; i < data.list.length; i += 8) {
-    const dayData = data.list[i];
-    const forecastElement = document.createElement("div");
-    forecastElement.classList.add("forecast-day", "glass-effect");
-    forecastElement.innerHTML = `
-            <p>${new Date(dayData.dt_txt).toLocaleDateString("uk-UA")}</p>
-            <img src="http://openweathermap.org/img/wn/${
-              dayData.weather[0].icon
-            }.png" alt="Іконка погоди">
-            <p>${dayData.main.temp}°C</p>
-            <p>${dayData.weather[0].description}</p>
-        `;
-    forecastContainer.appendChild(forecastElement);
+// Додати обробник подій для кнопки пошуку
+document.getElementById("search-btn").addEventListener("click", () => {
+  const city = document.getElementById("city-input").value;
+  if (city) {
+    fetchWeatherData(city);
   }
-  document.getElementById("forecast-container").classList.remove("hidden");
-}
+});
